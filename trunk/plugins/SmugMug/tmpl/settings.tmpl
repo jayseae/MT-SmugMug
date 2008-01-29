@@ -1,0 +1,12 @@
+<fieldset>
+    <p><MT_TRANS phrase="You can set a default limit for your photos here.  This can always be overridden within templates."></p>
+    <mtapp:setting
+        id="smugmug_limit"
+        label="<MT_TRANS phrase="Photo Limit">">
+        <p>
+            <TMPL_IF name="mt4"><a href="javascript:void(0)" class="spinner" onclick="return junkScoreNudge(-1, 'smugmug_limit', 999)"><!-- <MT_TRANS phrase="Decrease"> --><img src="<TMPL_VAR name="static_uri">images/decrease.gif" alt="<MT_TRANS phrase="Decrease">" width="12" height="8" /></a></TMPL_IF>
+            <input type="text" size="3" id="smugmug_limit" name="smugmug_limit" value="<TMPL_VAR name="smugmug_limit" escape="html">" />
+            <TMPL_IF name="mt4"><a href="javascript:void(0)" class="spinner" onclick="return junkScoreNudge(1,'smugmug_limit', 999)"><img src="<TMPL_VAR name="static_uri">images/increase.gif" alt="<MT_TRANS phrase="Increase">" width="12" height="8" /><!-- <MT_TRANS phrase="Increase"> --></a></TMPL_IF>
+        </p>
+    </mtapp:setting>
+</fieldset>
