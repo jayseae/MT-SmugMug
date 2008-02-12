@@ -20,7 +20,7 @@ my $plugin = MT::Plugin::SmugMug->new({
     plugin_link    => 'http://everitz.com/mt/smugmug/index.php',
     doc_link       => 'http://everitz.com/mt/smugmug/install.php',
 #    l10n_class     => 'SmugMug::L10N',
-    version        => '0.0.1',
+    version        => '0.0.2',
     config_template   => 'settings.tmpl',
     settings               => new MT::PluginSettings([
         ['smugmug_limit', { Default => 10 }],
@@ -211,7 +211,7 @@ sub smugmug_photos {
                         smugmug_set_value($ctx, 'smugmugphotolink', $photo, 'guid');
                         smugmug_set_value($ctx, 'smugmugphotopage', $photo, 'link');
                         my $id = $photo->first_child('link')->text;
-                        $id =~ m|http://.+\.smugmug\.com/gallery/\d+\#(\d+)|;
+                        $id =~ m|http://.+\.smugmug\.com/gallery/[[:alnum:]_]+\#(\d+)|;
                         $ctx->stash('smugmugphotoid', $1);
                         smugmug_set_value($ctx, 'smugmugphotodescription', $photo, 'description');
                         smugmug_set_value($ctx, 'smugmugphotocategory', $photo, 'category');
@@ -281,7 +281,11 @@ sub smugmug_return_value {
 
 sub smugmug_set_value {
     my ($ctx, $field, $root, $element) = @_;
-    $ctx->stash($field, $root->first_child($element) ? $root->first_child($element)->text : '');
+    if (my $ele = $root->first_child($element)) {
+        $ctx->stash($field, $ele->text);
+    } else {
+        $ctx->stash($field, '');
+    }
 }
 
 1;
