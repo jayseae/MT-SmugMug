@@ -1,5 +1,17 @@
 # ===========================================================================
-# Copyright Everitz Consulting.  Not for redistribution.
+# A Movable Type plugin to easily integrate SmugMug with your site.
+# Copyright 2008 Everitz Consulting <everitz.com>.
+#
+# This program is free software:  You may redistribute it and/or modify it
+# it under the terms of the Artistic License version 2 as published by the
+# Open Source Initiative.
+#
+# This program is distributed in the hope that it will be useful but does
+# NOT INCLUDE ANY WARRANTY; Without even the implied warranty of FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+# You should have received a copy of the Artistic License with this program.
+# If not, see <http://www.opensource.org/licenses/artistic-license-2.0.php>.
 # ===========================================================================
 package MT::Plugin::SmugMug;
 
@@ -20,7 +32,7 @@ my $plugin = MT::Plugin::SmugMug->new({
 	plugin_link			=> 'http://everitz.com/mt/smugmug/index.php',
 	doc_link				=> 'http://everitz.com/mt/smugmug/install.php',
 #	l10n_class			=> 'SmugMug::L10N',
-	version					=> '0.0.3',
+	version					=> '0.0.4',
 	config_template	=> 'settings.tmpl',
 	settings				=> new MT::PluginSettings([
 		['smugmug_limit', { Default => 10 }],
